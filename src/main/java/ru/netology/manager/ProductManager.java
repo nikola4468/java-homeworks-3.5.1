@@ -1,9 +1,16 @@
 package ru.netology.manager;
 
+import lombok.AllArgsConstructor;
+import lombok.Data;
+import lombok.NoArgsConstructor;
 import ru.netology.domain.Book;
 import ru.netology.domain.Product;
-import ru.netology.domain.ProductRepository;
 import ru.netology.domain.Smartphone;
+import ru.netology.repository.ProductRepository;
+
+@NoArgsConstructor
+@AllArgsConstructor
+@Data
 
 public class ProductManager {
 
@@ -27,12 +34,12 @@ public class ProductManager {
         repository.removeById(id);
     }
 
-    public Product[] searcyBy(String text) {
+    public Product[] searchBy(String text) {
         Product[] result = new Product[0];
-        for (Product product: repository.findAll()) {
+        for (Product product : repository.findAll()) {
             if (matches(product, text)) {
                 Product[] tmp = new Product[result.length + 1];
-                // используйте System.arraycopy, чтобы скопировать всё из result в tmp
+                System.arraycopy(result, 0, tmp, 0, result.length);
                 tmp[tmp.length - 1] = product;
                 result = tmp;
             }
@@ -41,9 +48,9 @@ public class ProductManager {
     }
 
     public boolean matches(Product product, String search) {
-        if (product instanceof Book) { // если в параметре product лежит объект класса Book
-            Book book = (Book) product; // положим его в переменную типа Book чтобы пользоваться методами класса Book
-            if (book.getAuthor().contains(search)) { // проверим есть ли поисковое слово в данных об авторе
+        if (product instanceof Book) {
+            Book book = (Book) product;
+            if (book.getAuthor().contains(search)) {
                 return true;
             }
             if (book.getName().contains(search)) {
@@ -51,9 +58,9 @@ public class ProductManager {
             }
             return false;
         }
-        if (product instanceof Smartphone) { // если в параметре product лежит объект класса Book
-            Smartphone smartphone = (Smartphone) product; // положим его в переменную типа Book чтобы пользоваться методами класса Book
-            if (smartphone.getCompany().contains(search)) { // проверим есть ли поисковое слово в данных об авторе
+        if (product instanceof Smartphone) {
+            Smartphone smartphone = (Smartphone) product;
+            if (smartphone.getCompany().contains(search)) {
                 return true;
             }
             if (smartphone.getName().contains(search)) {

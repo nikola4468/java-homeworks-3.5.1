@@ -22,4 +22,11 @@ public class Product {
         Product product = (Product) o;
         return id == product.id && price == product.price && Objects.equals(name, product.name);
     }
+
+    public boolean matches(String search) {
+        if (name.contains(search)) {
+            return true;
+        }
+        return false;
+    }
 }

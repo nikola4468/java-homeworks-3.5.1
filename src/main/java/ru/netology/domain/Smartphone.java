@@ -17,4 +17,11 @@ public class Smartphone extends Product {
         super(id, name, price);
         this.company = company;
     }
+
+    public boolean matches(String search) {
+        if (super.matches(search)) {
+            return true;
+        }
+        return company.contains(search);
+    }
 }

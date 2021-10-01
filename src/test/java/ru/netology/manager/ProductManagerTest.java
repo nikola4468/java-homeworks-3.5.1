@@ -176,7 +176,7 @@ class ProductManagerTest {
         manager.add(product);
 
         Product[] actual = manager.searchBy("имя");
-        Product[] expected = new Product[]{};
+        Product[] expected = new Product[]{product};
         assertArrayEquals(expected, actual);
     }
 }

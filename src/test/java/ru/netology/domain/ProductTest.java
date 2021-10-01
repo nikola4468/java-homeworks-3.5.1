@@ -15,8 +15,8 @@ class ProductTest {
     @Test
     public void shouldMatches() {
         Product first = new Product(1, "Java I", 1000);
-        assertEquals(first.matches("Java I"), true);
-        assertEquals(first.matches("Java II"), false);
+        assertEquals(true, first.matches("Java I"));
+        assertEquals(false, first.matches("Java II"));
 
     }
 }

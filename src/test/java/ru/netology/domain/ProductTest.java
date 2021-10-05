@@ -2,7 +2,7 @@ package ru.netology.domain;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.assertEquals;
+import static org.junit.jupiter.api.Assertions.*;
 
 class ProductTest {
     @Test
@@ -15,8 +15,8 @@ class ProductTest {
     @Test
     public void shouldMatches() {
         Product first = new Product(1, "Java I", 1000);
-        assertEquals(true, first.matches("Java I"));
-        assertEquals(false, first.matches("Java II"));
+        assertTrue(first.matches("Java I"));
+        assertFalse(first.matches("Java II"));
 
     }
 }

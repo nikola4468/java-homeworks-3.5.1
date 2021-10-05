@@ -13,10 +13,14 @@ class ProductTest {
     }
 
     @Test
-    public void shouldMatches() {
+    public void shouldMatchesTr() {
         Product first = new Product(1, "Java I", 1000);
         assertTrue(first.matches("Java I"));
-        assertFalse(first.matches("Java II"));
+    }
 
+    @Test
+    public void shouldMatchesFa() {
+        Product first = new Product(1, "Java I", 1000);
+        assertFalse(first.matches("Java II"));
     }
 }

@@ -2,15 +2,20 @@ package ru.netology.domain;
 
 import org.junit.jupiter.api.Test;
 
-import static org.junit.jupiter.api.Assertions.*;
+import static org.junit.jupiter.api.Assertions.assertFalse;
+import static org.junit.jupiter.api.Assertions.assertTrue;
 
 class BookTest {
 
     @Test
-    public void shouldMatches() {
+    public void shouldMatchesTr() {
         Book book = new Book(1, "название 1", 1000, "автор 1");
         assertTrue(book.matches("автор 1"));
-        assertFalse(book.matches("автор 2"));
+    }
 
+    @Test
+    public void shouldMatchesFa() {
+        Book book = new Book(1, "название 1", 1000, "автор 1");
+        assertFalse(book.matches("автор 2"));
     }
 }
